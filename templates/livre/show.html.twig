@@ -258,13 +258,13 @@
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ path('user_index') }}"><i class="fa fa-users"></i>Users</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ path('livre_index') }}"><i class="fa fa-book"></i>Books</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('genre_index') }}"><i class="fa fa-list"></i>Genres</a>
                 </li>
-                <li class="nav-item active" >
+                <li class="nav-item " >
                     <a class="nav-link" href="{{ path('auteur_index') }}"><i class="fa fa-user"></i>Authors</a>
                 </li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}

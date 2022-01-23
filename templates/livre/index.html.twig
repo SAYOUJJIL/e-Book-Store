@@ -294,8 +294,11 @@
             		<div class="table-title">
 						<div class="row">
 							<div class="col-sm-12">
-						<a id="add" class="btn btn-primary" href="{{ path('livre_new') }}" ><i class="material-icons">&#xE147;</i> <span>Create new</span></a>						
-								<button name="refresh" class="btn btn-success" onClick="window.location.reload();" /><i class="fa fa-refresh" aria-hidden="true"></i>Refresh page</button>		
+                             {% if is_granted('ROLE_ADMIN') %}
+					            	<a id="add" class="btn btn-primary" href="{{ path('livre_new') }}" ><i class="material-icons">&#xE147;</i> <span>Create new</span></a>						
+							 {% endif %}
+
+                                <button name="refresh" class="btn btn-success" onClick="window.location.reload();" /><i class="fa fa-refresh" aria-hidden="true"></i>Refresh page</button>		
 							</div>
 						</div>
 					</div>

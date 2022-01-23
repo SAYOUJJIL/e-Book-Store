@@ -179,6 +179,13 @@
                  background-color: #3879B7;
                 color:white;
             }
+              .backhome{
+            background-color: #668BC4    ;
+            color: #ffffff;
+            text-decoration: none;
+            margin-left:60px;
+            margin-top:20px;
+            }
         </style>
 
 {% endblock %}
@@ -226,6 +233,8 @@
              {{ message }}
     </div>
 {% endfor %}
+ <a class="button-18 backhome"  href="{{ path('livre_index') }}"><i class="bi bi-skip-backward"></i>back to list</a>
+
 	{% if livres|length > 0  %}
 	<div class="container mt-2"style="background-color:white;"> <br> <br>
 		<h2>Filtering Results</h2>

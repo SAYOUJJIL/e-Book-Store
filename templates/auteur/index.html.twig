@@ -1,0 +1,369 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteur index{% endblock %}
+
+{% block stylesheets %}
+        <link href="/css/style.css" rel="stylesheet" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">         
+                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto");
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            i {
+                margin-right: 10px;
+            }
+            /*----------bootstrap-navbar-css------------*/
+            .navbar-logo {
+                padding: 15px;
+                color: #fff;
+                width:40%;
+            }
+            .navbar-mainbg {
+                background-color: #3879B7;
+                padding: 0px;
+            }
+            #navbarSupportedContent {
+                overflow: hidden;
+                position: relative;
+            }
+            #navbarSupportedContent ul {
+                padding: 0px;
+                margin: 0px;
+            }
+            #navbarSupportedContent ul li a i {
+             margin-right: 10px;
+            }
+            #navbarSupportedContent li {
+                list-style-type: none;
+                float: left;
+            }
+            #navbarSupportedContent ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 15px;
+                display: block;
+                padding: 20px 20px;
+                transition-duration: 0.6s;
+                transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                 position: relative;
+            }
+            #navbarSupportedContent > ul > li.active > a {
+            color: #5161ce;
+            background-color: transparent;
+            transition: all 0.7s;
+            }
+            #navbarSupportedContent a:not(:only-child):after {
+                content: "\f105";
+                position: absolute;
+                right: 20px;
+                top: 10px;
+                font-size: 14px;
+                font-family: "Font Awesome 5 Free";
+                display: inline-block;
+                padding-right: 3px;
+                vertical-align: middle;
+                font-weight: 900;
+                transition: 0.5s;
+            }
+            #navbarSupportedContent .active > a:not(:only-child):after {
+            transform: rotate(90deg);
+            }
+            .hori-selector {
+            display: inline-block;
+            position: absolute;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            transition-duration: 0.6s;
+            transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background-color: #fff;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            margin-top: 10px;
+            }
+            .hori-selector .right,
+            .hori-selector .left {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            bottom: 10px;
+            }
+            .hori-selector .right {
+            right: -25px;
+            }
+            .hori-selector .left {
+            left: -25px;
+            }
+            .hori-selector .right:before,
+            .hori-selector .left:before {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #3879B7;
+            }
+            .hori-selector .right:before {
+            bottom: 0;
+            right: -25px;
+            }
+            .hori-selector .left:before {
+            bottom: 0;
+            left: -25px;
+            }
+
+            @media (min-width: 992px) {
+            .navbar-expand-custom {
+                -ms-flex-flow: row nowrap;
+                flex-flow: row nowrap;
+                -ms-flex-pack: start;
+                justify-content: flex-start;
+            }
+            .navbar-expand-custom .navbar-nav {
+                -ms-flex-direction: row;
+                flex-direction: row;
+            }
+            .navbar-expand-custom .navbar-toggler {
+                display: none;
+            }
+            .navbar-expand-custom .navbar-collapse {
+                display: -ms-flexbox !important;
+                display: flex !important;
+                -ms-flex-preferred-size: auto;
+                flex-basis: auto;
+            }
+            }
+
+            @media (max-width: 991px) {
+            #navbarSupportedContent ul li a {
+                padding: 12px 30px;
+            }
+            .hori-selector {
+                margin-top: 0px;
+                margin-left: 10px;
+                border-radius: 0;
+                border-top-left-radius: 25px;
+                border-bottom-left-radius: 25px;
+            }
+            .hori-selector .left,
+            .hori-selector .right {
+                right: 10px;
+            }
+            .hori-selector .left {
+                top: -25px;
+                left: auto;
+            }
+            .hori-selector .right {
+                bottom: -25px;
+            }
+            .hori-selector .left:before {
+                left: -25px;
+                top: -25px;
+            }
+            .hori-selector .right:before {
+                bottom: -25px;
+                left: -25px;
+            }
+            }
+            thead
+            {
+                 background-color: #3879B7;
+                color:white;
+            }
+        </style>
+
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#"><img src="/images/logobookstore.png" width="130px" style="margin-left:3%"></a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ path('user_index') }}"><i class="fa fa-users"></i>Users</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('livre_index') }}"><i class="fa fa-book"></i>Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('genre_index') }}"><i class="fa fa-list"></i>Genres</a>
+                </li>
+                <li class="nav-item active" >
+                    <a class="nav-link" href="{{ path('auteur_index') }}"><i class="fa fa-user"></i>Authors</a>
+                </li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<li class="nav-item ">
+					    <a class="nav-link active" href="{{ path('app_logout') }}"><i class="bi bi-box-arrow-left"></i> Logout</a>
+					</li>
+					{% else %}
+						<li class="nav-item "><a href="{{ path('app_register') }}" class="nav-link active"><i class="bi bi-person-circle"></i> Sign Up</a></li>
+                        <li class="nav-item "><a href="{{ path('app_login') }}" class="nav-link active"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+					{% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4 ">
+        {# <div class="row headbook"  style=";margin-top:10pxbackground-image:url(../images/backg.jpg);background-size:cover;background-size:cover;background-position:0% 0% ;background-repeat: no-repeat;"> #}
+        <div class="row headbook" style=" text-align:right ;align-items: right;">
+        <div class="col-md-3" style="padding-top:12%;">
+            <h1>Auteur index</h1><br> <br>
+             </div>
+        <div class="col-md-8">
+             <img src="/images/5f3700646e439f4658d2a49a_piblo_cover-removebg-preview.png" alt="introuvable" width="77%" height="300px">
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </symbol>
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol>
+                    </svg>
+                    {% for message in app.flashes('info') %}  
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>                            {{ message }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+            		<div class="table-title">
+						<div class="row">
+							<div class="col-sm-12">
+                            {% if is_granted('ROLE_ADMIN') %}	
+								<a id="add" class="btn btn-primary" href="{{ path('auteur_new') }}" ><i class="material-icons">&#xE147;</i> <span>Create new</span></a>						
+                            {% endif %}
+                                <button name="refresh" class="btn btn-success" onClick="window.location.reload();" /><i class="fa fa-refresh" aria-hidden="true"></i>Refresh page</button>		
+							</div>
+						</div>
+					</div>
+                    <br>
+                    <table id="example" class="table table-striped table-bordered grid" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom_prenom</th>
+                                <th>Sexe</th>
+                                <th>Date_de_naissance</th>
+                                <th>Nationalite</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for auteur in auteurs %}
+                            <tr>
+                                <td>{{ auteur.id }}</td>
+                                <td>{{ auteur.nomPrenom }}</td>
+                                <td>{{ auteur.sexe }}</td>
+                                <td>{{ auteur.dateDeNaissance ? auteur.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                                <td>{{ auteur.nationalite }}</td>
+                                <td>
+                                    <a class=""  href="{{ path('auteur_show', {'id': auteur.id}) }}"><span><i class="fa fa-eye" style="color: #668BC4;" aria-hidden="true"></i></span></a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class=""  href="{{ path('auteur_edit', {'id': auteur.id}) }}"><span><i class="fa fa-pencil-square-o"  style="color: #27AE60;" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#example').DataTable();
+                });
+               // ---------Responsive-navbar-active-animation-----------
+                function test(){
+                    var tabsNewAnim = $('#navbarSupportedContent');
+                    var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+                    var activeItemNewAnim = tabsNewAnim.find('.active');
+                    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+                    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+                    var itemPosNewAnimTop = activeItemNewAnim.position();
+                    var itemPosNewAnimLeft = activeItemNewAnim.position();
+                    $(".hori-selector").css({
+                        "top":itemPosNewAnimTop.top + "px", 
+                        "left":itemPosNewAnimLeft.left + "px",
+                        "height": activeWidthNewAnimHeight + "px",
+                        "width": activeWidthNewAnimWidth + "px"
+                    });
+                    $("#navbarSupportedContent").on("click","li",function(e){
+                        $('#navbarSupportedContent ul li').removeClass("active");
+                        $(this).addClass('active');
+                        var activeWidthNewAnimHeight = $(this).innerHeight();
+                        var activeWidthNewAnimWidth = $(this).innerWidth();
+                        var itemPosNewAnimTop = $(this).position();
+                        var itemPosNewAnimLeft = $(this).position();
+                        $(".hori-selector").css({
+                            "top":itemPosNewAnimTop.top + "px", 
+                            "left":itemPosNewAnimLeft.left + "px",
+                            "height": activeWidthNewAnimHeight + "px",
+                            "width": activeWidthNewAnimWidth + "px"
+                        });
+                    });
+                }
+                $(document).ready(function(){
+                    setTimeout(function(){ test(); });
+                });
+                $(window).on('resize', function(){
+                    setTimeout(function(){ test(); }, 500);
+                });
+                $(".navbar-toggler").click(function(){
+                    $(".navbar-collapse").slideToggle(300);
+                    setTimeout(function(){ test(); });
+                });
+
+
+
+                // --------------add active class-on another-page move----------
+                jQuery(document).ready(function($){
+                    // Get current path and find target link
+                    var path = window.location.pathname.split("/").pop();
+
+                    // Account for home page with empty path
+                    if ( path == '' ) {
+                        path = 'index.html';
+                    }
+
+                    var target = $('#navbarSupportedContent ul li a[href="'+path+'"]');
+                    // Add active class to target link
+                    target.parent().addClass('active');
+                });;
+            </script>
+        {% endblock %}
+    </div> 
+{% endblock %}
+

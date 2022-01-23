@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+        <link href="/css/stylelogin.css" rel="stylesheet" >
+    	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	       
+{% endblock %}
+{% block body %}
+    <img class="wave" src="/images/backlogin.jpg">
+	<div class="container">
+		<div class="img">
+		<img src='/images/login.svg'>
+	</div>
+	<div class="login-content">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+            <img src="/images/avatar.svg">
+            <h2 class="title">Login</h2>
+            <div class="input-div one">
+                <div class="i">
+             		<i class="fas fa-user"></i>
+           		</div>
+           		<div class="div">
+           		   	{# <h5>Email</h5> #}
+                    <input type="email"name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Email" required autofocus>
+                </div>
+           	</div>
+            <div class="input-div pass">
+           		<div class="i"> 
+           			<i class="fas fa-lock"></i>
+           	    </div>
+        	    <div class="div">
+           		    {# <h5>Password</h5> #}
+                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Password" required>
+           	    </div>
+            </div>
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
+            <a href="{{ path('app_register') }}">Not a member ? Signup now ?</a>
+            <button class="btn btn-lg btn-primary" type="submit">
+                Sign in
+            </button>
+        </form>
+    </div>
+
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script>
+    const inputs = document(".form-control");
+    function addcl(){
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+    }
+
+    function remcl(){
+        let parent = this.parentNode.parentNode;
+        if(this.value == ""){
+            parent.classList.remove("focus");
+        }
+    }
+
+
+    inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+    });
+
+    </script>
+ {% endblock %}
+
+{% endblock %}

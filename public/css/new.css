@@ -1,0 +1,13 @@
+.multi_select{
+    width: 400px;   
+}
+
+.multi_select select{
+    width: 100%;
+}
+
+.multi_select button{
+    background-color: darkblue !important;
+    
+
+}
